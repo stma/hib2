@@ -29,9 +29,13 @@ public class HibernateContext implements AutoCloseable {
             props.put("hibernate.hbm2ddl.auto", "update");
 
             configuration.setProperties(props);
+
             configuration.addAnnotatedClass(Pizza.class);
+
             configuration.addAnnotatedClass(Student.class);
             configuration.addAnnotatedClass(Course.class);
+
+            configuration.addAnnotatedClass(CountryE.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties())

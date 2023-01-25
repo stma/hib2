@@ -1,13 +1,12 @@
 package com.progmatic.hibernate;
 
-import com.progmatic.hibernate.model.Course;
-import com.progmatic.hibernate.model.HibernateContext;
-import com.progmatic.hibernate.model.Pizza;
-import com.progmatic.hibernate.model.Student;
+import com.progmatic.hibernate.model.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.hibernate.query.SelectionQuery;
+
+import java.util.List;
 
 public class Controller implements AutoCloseable {
 
@@ -200,5 +199,20 @@ public class Controller implements AutoCloseable {
         session.clear();
 
         session.getTransaction().commit();
+    }
+
+    public List<CountryE> getCountryByCarSign(String tt) {
+        List<CountryE> result = List.of();
+        Session session = model.getSession();
+
+        Transaction tx = session.beginTransaction();
+
+        Query<CountryE> q = session.createNamedQuery("getTTCar", CountryE.class);
+        q.setParameter("carSign", tt);
+        result = q.list();
+        session.clear();
+
+        tx.commit();
+        return result;
     }
 }

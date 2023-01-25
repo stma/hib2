@@ -3,5 +3,11 @@
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="f096e900-9a68-4d3a-820c-6277d850c02a" />
+    <option name="reLastEntityCreationPackage" value="src/com/progmatic/hibernate/model" />
+    <option name="newEntityIdStrategy" value="Identity" />
+    <option name="reIgnoreSlowDbConnections">
+      <ignoreDs id="f096e900-9a68-4d3a-820c-6277d850c02a" />
+    </option>
   </component>
 </project>

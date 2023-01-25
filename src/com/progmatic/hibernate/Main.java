@@ -1,6 +1,9 @@
 package com.progmatic.hibernate;
 
 
+import com.progmatic.hibernate.model.CountryE;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -43,6 +46,12 @@ public class Main {
                     sc.nextLine();
 
                     controller.deletePizza(pid);
+                }
+                case "ttcar" -> {
+                    List<CountryE> cc = controller.getCountryByCarSign("TT");
+                    for (var c: cc) {
+                        System.out.println(c);
+                    }
                 }
                 default -> {
                     if (!option.equalsIgnoreCase("ghyt")) {
