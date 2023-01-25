@@ -19,5 +19,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql.connector.java" level="project" />
     <orderEntry type="library" name="hibernate.orm.core" level="project" />
+    <orderEntry type="library" name="hibernate.orm.jpamodelgen" level="project" />
   </component>
 </module>

@@ -53,6 +53,12 @@ public class Main {
                         System.out.println(c);
                     }
                 }
+                case "ttcareg" -> {
+                    List<CountryE> cc = controller.getCountryByCarSignEntG("TT");
+                    for (var c: cc) {
+                        System.out.println(c);
+                    }
+                }
                 default -> {
                     if (!option.equalsIgnoreCase("ghyt")) {
                         System.out.println("Nem ismert opcio...");
@@ -73,6 +79,8 @@ public class Main {
         System.out.println("\tPizzak - (l)");
         System.out.println("\tUj Pizza - (c)");
         System.out.println("\tTorol Pizza - (d)");
+        System.out.println("\tOrszag - tt - (ttcar)");
+        System.out.println("\tOrszag - tt - EG - (ttcareg)");
         System.out.println("\tKilepes - (q)");
         System.out.println("=".repeat(30));
     }

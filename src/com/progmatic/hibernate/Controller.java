@@ -1,6 +1,9 @@
 package com.progmatic.hibernate;
 
 import com.progmatic.hibernate.model.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -207,8 +210,31 @@ public class Controller implements AutoCloseable {
 
         Transaction tx = session.beginTransaction();
 
+//        Query<CountryE> q = session.createNamedQuery("getTTCar", CountryE.class);
+//        q.setParameter("carSign", tt);
+//        result = q.getResultList();
+
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<CountryE> cQuery = cb.createQuery(CountryE.class);
+        Root<CountryE> u = cQuery.from(CountryE.class);
+        cQuery.select(u).where(cb.equal(u.get("autojel"), "TT"));
+
+        result = session.createQuery(cQuery).getResultList();
+        session.clear();
+
+        tx.commit();
+        return result;
+    }
+
+    public List<CountryE> getCountryByCarSignEntG(String tt) {
+        List<CountryE> result = List.of();
+        Session session = model.getSession();
+
+        Transaction tx = session.beginTransaction();
+
         Query<CountryE> q = session.createNamedQuery("getTTCar", CountryE.class);
         q.setParameter("carSign", tt);
+        q.setHint("javax.persistence.loadgraph", session.getEntityGraph("testEntityGraph"));
         result = q.list();
         session.clear();
 

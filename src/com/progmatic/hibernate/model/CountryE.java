@@ -6,9 +6,26 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name="orszagok")
-@NamedQuery(
-        name="getTTCar",
-        query="Select c FROM CountryE c WHERE autojel like :carSign"
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name="getTTCar",
+                        query="Select c FROM CountryE c WHERE autojel like :carSign"
+                )
+
+        }
+)
+@NamedEntityGraphs(
+        {
+                @NamedEntityGraph(
+                        name="testEntityGraph",
+                        attributeNodes = {
+                                @NamedAttributeNode(value = "orszag"),
+                                @NamedAttributeNode(value = "fovaros"),
+                                @NamedAttributeNode(value = "nepesseg"),
+                        }
+                )
+        }
 )
 public class CountryE {
     @Id
